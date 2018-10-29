@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios'
 
 import './FullPost.css';
@@ -44,8 +44,8 @@ class FullPost extends Component {
 
             );
         }
-        return post;
+        return post
     }
 }
 
-export default FullPost;
+export default FullPost
