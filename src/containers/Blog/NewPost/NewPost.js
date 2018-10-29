@@ -4,10 +4,15 @@ import axios from 'axios'
 import './NewPost.css';
 
 class NewPost extends Component {
+
     state = {
         title: '',
         content: '',
         author: 'Max'
+    }
+
+    componentDidMount () {
+        console.log(this.props)
     }
 
     postDataHandler = () => {
