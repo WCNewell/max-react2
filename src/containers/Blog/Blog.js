@@ -19,7 +19,7 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             <li><NavLink
-                                to='/'
+                                to='/posts'
                                 exact
                                 activeStyle={{
                                     color: '#fa923f',
@@ -42,8 +42,8 @@ class Blog extends Component {
                 {/* <Route path='/' exact component={Posts} /> */}
                 {/* // ^^ Route can live outside switch, basically you can mix and match these to create what you want/need */}
                 <Switch>
-                    <Route path='/' exact component={Posts} />
                     <Route path='/newpost' exact component={NewPost} />
+                    <Route path='/posts' component={Posts} />
                 </Switch>
             </div>
         );
