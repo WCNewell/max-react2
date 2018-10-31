@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
-import { Route, NavLink, Switch } from 'react-router-dom'
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom'
 
 // import axios from 'axios'
 
 // import axios from '../../axios'
 
 import Posts from '../Blog/Posts/Posts'
-import NewPost from './NewPost/NewPost'
-import './Blog.css';
+import asyncComponent from '../../hoc/asyncComponent'
+// import NewPost from './NewPost/NewPost'
+import './Blog.css'
+
+const AsyncNewPost = asyncComponent (() => {
+    return import('./NewPost/NewPost')
+})
 
 class Blog extends Component {
+
+    state = {
+        auth: true
+    }
     
     render () {
 
@@ -42,8 +51,13 @@ class Blog extends Component {
                 {/* <Route path='/' exact component={Posts} /> */}
                 {/* // ^^ Route can live outside switch, basically you can mix and match these to create what you want/need */}
                 <Switch>
-                    <Route path='/newpost' exact component={NewPost} />
+                    {this.state.auth ? <Route path='/newpost' exact component={AsyncNewPost} /> : null }
                     <Route path='/posts' component={Posts} />
+                    <Route render={()=> <h1>Not found</h1>} />
+                    {/* <Route path='/' component={Posts} /> */}
+                    {/* <Redirect from='/' to='/posts' /> */}
+                    {/* Here the switch statement is not necessary but left for reference purposes */}
+                    {/* Also in Redirect above, the from statement only works here because it is wrapped in the Switch element */}
                 </Switch>
             </div>
         );
