@@ -53,9 +53,10 @@ class Blog extends Component {
                 <Switch>
                     {this.state.auth ? <Route path='/newpost' exact component={AsyncNewPost} /> : null }
                     <Route path='/posts' component={Posts} />
-                    <Route render={()=> <h1>Not found</h1>} />
+                    {/* <Route render={()=> <h1>Not found</h1>} /> */}
+                    {/* ^^Example of what to display when the page does not load or user is unauthorized, etc. */}
                     {/* <Route path='/' component={Posts} /> */}
-                    {/* <Redirect from='/' to='/posts' /> */}
+                    <Redirect from='/' to='/posts' />
                     {/* Here the switch statement is not necessary but left for reference purposes */}
                     {/* Also in Redirect above, the from statement only works here because it is wrapped in the Switch element */}
                 </Switch>
